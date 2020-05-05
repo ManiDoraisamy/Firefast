@@ -1,0 +1,16 @@
+Name, Count, Time
+runSync, 1, 498
+runSync, 2, 445
+runSync, 4, 647
+runSync, 8, 1191
+runSync, 16, 2165
+runPromise, 1, 398
+runPromise, 2, 649
+runPromise, 4, 874
+runPromise, 8, 889
+runPromise, 16, 956
+runAsync, 1, 176
+runAsync, 2, 181
+runAsync, 4, 176
+runAsync, 8, 267
+runAsync, 16, 278
