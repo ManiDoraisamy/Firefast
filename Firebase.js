@@ -1,36 +1,3 @@
-class Firebase
-{
-	constructor()
-	{
-		this.credential = {
-			cert:function(acc)
-			{
-				return acc;
-			}
-		};
-	}
-
-	initializeApp(cfg)
-	{
-		this.config = cfg;
-		this.service =  OAuth2.createService('Firebase')
-			.setTokenUrl('https://accounts.google.com/o/oauth2/token')
-			.setPrivateKey(cfg.credential.private_key)
-			.setIssuer(cfg.credential.client_email)
-			.setPropertyStore(PropertiesService.getScriptProperties())
-			.setScope('https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/firebase.database');
-		this.rtdb = new FirebaseRTDB(this);
-	}
-
-	database()
-	{
-		if(this.rtdb)
-			return this.rtdb;
-		else
-			throw new Error('Firebase not initialized');
-	}
-}
-
 class FirebaseRTDB
 {
 	constructor(firebase)
@@ -147,24 +114,3 @@ class RequestRTDB extends Promise
     }
 }
 
-firebase = new Firebase();
-
-var ff_req = typeof require!=='undefined'?require:null;
-
-require = function(modnm)
-{
-	if(modnm=='firebase-admin')
-	{
-		return firebase;
-	}
-	else if(ff_req)
-	{
-		return ff_req(modnm);
-	}
-	else
-	{
-		var jsfl = ScriptApp.getResource(modnm);
-		var json = jsfl.getDataAsString();
-		return JSON.parse(json);
-	}
-}
