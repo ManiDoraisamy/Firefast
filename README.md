@@ -1,2 +1,2 @@
 # Firefast
-Firebase SDK for Apps Script V8
+Firebase SDK for Apps Script V8 Runtime
